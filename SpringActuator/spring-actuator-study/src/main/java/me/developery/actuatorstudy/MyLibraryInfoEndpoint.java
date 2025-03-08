@@ -5,6 +5,7 @@ import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
+import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpoint;
 import org.springframework.lang.Nullable;
 
 import java.util.Arrays;
@@ -15,22 +16,34 @@ import java.util.List;
 @Endpoint(id = "myLibraryInfo")  // endpoint id 지정. 필수!
 public class MyLibraryInfoEndpoint {
 
-//    @WriteOperation
-//    public void changeSomething(String name, boolean enableSomething) {
-//        log.info("name: {}, enableSomething: {}", name, enableSomething);
-//    }
+    /**
+     * POST 방식으로 호출하는 예제 4.2
+     */
+    @WriteOperation
+    public void changeSomething(String name, boolean enableSomething) {
+        log.info("name: {}, enableSomething: {}", name, enableSomething);
+    }
 
-//    @ReadOperation
-//    public String getPathVariable(@Selector String path1) {
-//        log.info("path1: {}", path1);
-//        return path1;
-//    }
+    /**
+     * POST 방식으로 호출하는 예제 4.3
+     * - 3 - path 파라미터 수신방법 (@Selector 방법)
+     */
+    @ReadOperation
+    public String getPathVariable(@Selector String path1) {
+        log.info("path1: {}", path1);
+        return path1;
+    }
 
-//    @ReadOperation
-//    public String getMultiPathVariable(@Selector(match = Selector.Match.ALL_REMAINING) String[] path) {
-//        log.info("path: {}", Arrays.asList(path));
-//        return Arrays.asList(path).toString();
-//    }
+    /**
+     * POST 방식으로 호출하는 예제 4.3
+     * - 3 - path 파라미터 수신방법 (@Selector 방법) --> path1/path2/path3
+     */
+    @ReadOperation
+    public String getMultiPathVariable(@Selector(match = Selector.Match.ALL_REMAINING) String[] path) {
+        log.info("path: {}", Arrays.asList(path));
+        return Arrays.asList(path).toString();
+    }
+
 
     //처음 작성된 메소드
 //    @ReadOperation    // read 요청에 대한 메서드라는 의미
@@ -47,6 +60,12 @@ public class MyLibraryInfoEndpoint {
 //        return Arrays.asList(libraryInfo1, libraryInfo2);
 //    }
 
+    /**
+     * 2번쨰(오류 발생) - There was an unexpected error (type=Bad Request, status=400).
+     * @param name
+     * @param includeVersion
+     * @return
+     */
     @ReadOperation   // read 요청에 대한 메서드라는 의미
     public List<LibraryInfo> getLibraryInfos(@Nullable String name, boolean includeVersion) {
         LibraryInfo libraryInfo1 = new LibraryInfo();

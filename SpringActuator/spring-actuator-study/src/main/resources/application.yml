@@ -1,10 +1,11 @@
 management:
   endpoint:
+    health:
+#      show-components: ALWAYS
+      show-details: ALWAYS
     beans:
       cache:
         time-to-live:
-
-
   endpoints:
     web:
       exposure:
