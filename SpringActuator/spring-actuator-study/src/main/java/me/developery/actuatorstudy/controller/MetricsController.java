@@ -4,6 +4,7 @@ import io.micrometer.core.annotation.Counted;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.developery.actuatorstudy.counter.MyHttpRequestManager;
+import me.developery.actuatorstudy.counter.MyQueueManagerWithTags;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +23,38 @@ public class MetricsController {
         return "ok";
     }
 
-    @Counted("myCountedAnnotationCount")
+//    @Counted("myCountedAnnotationCount")
+//    @GetMapping("/counted")
+//    public String counted() {
+//        return "ok";
+//    }
+//
+    @Counted(value="myCountedAnnotationCount", extraTags = {"type", "test1"})
     @GetMapping("/counted")
     public String counted() {
         return "ok";
     }
 
+    @Counted(value="myCountedAnnotationCount", extraTags = {"type", "test2"})
+    @GetMapping("/counted2")
+    public String counted2() {
+        return "ok";
+    }
+
+    private final MyQueueManagerWithTags myQueueManagerWithTags;
+
+    @GetMapping("/push")
+    public String push() {
+        myQueueManagerWithTags.push();
+        return "ok";
+    }
+
+
+    @GetMapping("/pop")
+    public String pop() {
+        myQueueManagerWithTags.pop();
+        return "ok";
+
+
+    }
 }
