@@ -1,4 +1,4 @@
-package me.metric;
+package me.developery.actuatorstudy;
 
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;

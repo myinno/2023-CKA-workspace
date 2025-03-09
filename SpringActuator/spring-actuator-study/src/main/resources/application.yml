@@ -1,38 +1,6 @@
 management:
-  endpoint:
-    health:
-#      show-components: ALWAYS
-      show-details: ALWAYS
-    beans:
-      cache:
-        time-to-live:
   endpoints:
     web:
       exposure:
         include: "*"
-# 만약 elastic 모니터링 시스템과 연동되어야 한다면 (7장)
-#  elastic:
-#    metrics:
-#      export:
-#        host: "https://elastoic.example.com:8086"
-  info:
-    os:
-      enabled: true
-    java:
-      enabled: true
-    env:
-      enabled: true
-# git 정보 설정:
-    git:
-      mode: "full"
-      
-# info endpoint 내의 env 설정
-info:
-  my-app:
-    any-value: someValue
-    group-id: "@project.groupId@"
-    artifact-id: "@project.artifactId@"
-    encoding: "@project.build.sourceEncoding@"
-    java:
-      version: "@java.version@"
-  made-by: developerY
+

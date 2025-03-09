@@ -1,4 +1,4 @@
-package me.metric.count;
+package me.developery.actuatorstudy.counter;
 
 import io.micrometer.core.instrument.FunctionCounter;
 import io.micrometer.core.instrument.MeterRegistry;

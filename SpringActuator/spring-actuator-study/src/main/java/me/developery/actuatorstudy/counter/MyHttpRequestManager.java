@@ -1,4 +1,4 @@
-package me.metric.count;
+package me.developery.actuatorstudy.counter;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -12,7 +12,7 @@ public class MyHttpRequestManager {
 
     private final MeterRegistry meterRegistry;  // 생성자 주입
 
-    private Counter httpRequestCounter;  //  아래 init() 메서드에서 객체 생성 후 대입해줌
+    private Counter httpRequestCounter;
 
     /**
      * registry 에 등록

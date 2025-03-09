@@ -1,4 +1,4 @@
-package me.metric;
+package me.developery.actuatorstudy;
 
 import org.springframework.stereotype.Component;
 
